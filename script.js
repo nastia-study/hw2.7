@@ -10,14 +10,20 @@ var appData = {
     savings: false
 };
 
-var exps = prompt("Введите обязательную статью расходов в этом месяце", "");
-var optExps = +prompt("Во сколько обойдется?", "");
+for (i = 0; i < 3; i++) {
+    var a = prompt("Введите обязательную статью расходов в этом месяце", "");
+    var b = +prompt("Во сколько обойдется?", "");
+    if (typeof(a) == 'string' && typeof(b) == 'number' && a != '' && b != '' && typeof a != null && typeof b != null) {
+        appData.expences[a] = b; 
+        console.log("done");
+    } else {
+        console.log("Введите нормальные данные!");
+        i--;
+    }
+}
 
-appData.expences = {
-    exps: optExps
-};
+appData.moneyPerDay = appData.budget / 30;
 
-var dayBudget = appData.budget / 30;
-
-alert("Ваш бюджет на один день:" + dayBudget);
+alert("Ваш бюджет на один день:" + appData.moneyPerDay);
+console.log(appData);
 
